@@ -21,11 +21,21 @@ SERVICE_SCOPES = [
     globus_sdk.FlowsClient.scopes.run_manage,
     globus_sdk.FlowsClient.scopes.view_flows,
 ]
+# transfer_scope = globus_sdk.scopes.TransferScopes.make_mutable("all")
+# SCOPES = [
+#     "openid",
+#     "profile",
+#     "email",
+#     "urn:globus:auth:scope:auth.globus.org:view_identities",
+#     "urn:globus:auth:scope:transfer.api.globus.org:all offline_access",
+#     transfer_scope,
+# ]
 RESOURCE_SERVER = globus_sdk.FlowsClient.resource_server
 
 # Replace this with your own client ID; register a native application
 # client at https://app.globus.org/settings/developers
-CLIENT_ID = "61338d24-54d5-408f-a10d-66c06b59f6d2"  # tutorial client ID
+# CLIENT_ID = "61338d24-54d5-408f-a10d-66c06b59f6d2"  # tutorial client ID
+CLIENT_ID = "23ee8b0a-6740-41b2-afdc-92b59b5713b9"  #  globus-file-transfers-NativeAppReg
 
 NATIVE_CLIENT = globus_sdk.NativeAppAuthClient(CLIENT_ID)
 
@@ -48,6 +58,7 @@ def get_authorizer(flow_id=None):
         resource_server = flow_id
     else:
         scopes = SERVICE_SCOPES
+        # scopes = SCOPES
         resource_server = RESOURCE_SERVER
 
     # Try to load saved tokens
